@@ -84,7 +84,7 @@ AI_POLICY.md
 4. Run `cargo test --test exNN`.
 5. Read the compiler error from top to bottom: error code, arrow, help.
 6. When the exercise is green, move to the next one.
-7. Run `cargo test` and push when all 37 tests pass.
+7. Run `cargo test` and push to your branch when all 37 tests pass.
 
 The tests are the specification. If a test and a task description disagree,
 the test wins. If you believe a test is wrong, ask the instructor; do not edit
