@@ -1,0 +1,23 @@
+name: tests
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: checksum and cargo test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Verify that the tests are unchanged
+        run: sha256sum -c tests.sha256
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run all tests
+        run: cargo test --locked
