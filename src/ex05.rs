@@ -15,12 +15,16 @@ impl Account {
     ///
     /// The owner of a new account is the `"system"` program.
     pub fn new(address: String) -> Self {
-        todo!()
+        Self {
+            address,
+            lamports: 0,
+            owner: String::from("system"),
+        }
     }
 
     /// Add lamports to the account.
     pub fn deposit(&mut self, amount: u64) {
-        todo!()
+        self.lamports += amount;
     }
 
     /// Remove lamports from the account.
@@ -28,13 +32,17 @@ impl Account {
     /// Return `true` when the withdrawal succeeded. Return `false` and leave
     /// the balance unchanged when there are not enough lamports.
     pub fn withdraw(&mut self, amount: u64) -> bool {
-        todo!()
+        if amount > self.lamports {
+            return false;
+        }
+        self.lamports -= amount;
+        true
     }
 
     /// Return the balance in whole SOL, dropping any remainder.
     ///
     /// This is for display only. Never use a floating-point number for money.
     pub fn balance_in_sol(&self) -> u64 {
-        todo!()
+        self.lamports / 1_000_000_000
     }
 }
